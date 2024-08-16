@@ -51,6 +51,14 @@ docker run --rm \
   -p 8080:3000 \
   correctomatic/api
 ```
+You will probably need to include the redis host and to mount the upload directory:
+```bash
+docker run ...
+  ...
+  --add-host=redis:host-gateway \
+  --mount type=bind,source=/tmp/exercises,target=/tmp/exercises \
+  correctomatic/api
+```
 
 ## Build the image
 

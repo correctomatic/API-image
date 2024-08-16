@@ -17,7 +17,7 @@ ENV LOG_FILE=/var/log/correctomatic/correctomatic.log
 RUN mkdir -p /var/log/correctomatic && chown -R node:node /var/log/correctomatic
 RUN mkdir -p /tmp/exercises && chown -R node:node /tmp/exercises
 
-RUN apk add --no-cache git
+RUN apk add --no-cache git tini
 USER node
 
 # Create the folder for the exercises
@@ -33,4 +33,4 @@ WORKDIR /home/node/app/correction-api
 RUN npm install
 
 EXPOSE 3000
-ENTRYPOINT [ "node", "src/index.js" ]
+ENTRYPOINT ["/sbin/tini", "--", "node", "src/index.js"]
