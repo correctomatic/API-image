@@ -5,7 +5,7 @@ ARG REPO_URL=https://github.com/correctomatic/correction-API.git
 ARG REPO_BRANCH=master
 
 ENV UPLOAD_DIRECTORY=/tmp/exercises
-ENV PORT=8080
+ENV PORT=3000
 ENV NODE_ENV=production
 ENV REDIS_HOST=redis
 ENV REDIS_PORT=6379
