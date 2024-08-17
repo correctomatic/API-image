@@ -48,7 +48,7 @@ docker run --rm \
   -e NODE_ENV=value \
   -e LOG_LEVEL=info \
   -e LOG_FILE=/var/log/correctomatic/correctomatic.log \
-  -p 8080:3000 \
+  -p 8080:8080 \
   correctomatic/api
 ```
 You will probably need to include the redis host and to mount the upload directory:
