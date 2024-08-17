@@ -29,7 +29,7 @@ WORKDIR /app
 
 # Clone the repo and install dependencies
 RUN git clone -b $REPO_BRANCH $REPO_URL .
-RUN npm install
+RUN npm install --omit=dev
 
 EXPOSE ${PORT}
 ENTRYPOINT ["/sbin/tini", "--", "node", "src/index.js"]
