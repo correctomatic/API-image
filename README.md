@@ -29,6 +29,9 @@ The main variables you can pass are:
 - `REDIS_PORT`: Port of the redis server
 - `REDIS_PASSWORD`: Password for the redis server
 - `PORT`: Port where the API will listen
+- `DB_HOST`, `DB_USER`, `DB_PASSWORD`: Database connection parameters.
+- `DB_NAME`: Name of the database to use, defaults to `correctomatic`.
+- `JWT_SECRET_KEY`: Key for the JWT tokens.
 
 There are also variables for debugging:
 - `NODE_ENV`: Environment where the application is running. It can be `development`, `test` or `production`.
