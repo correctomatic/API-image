@@ -25,10 +25,14 @@ The documentation for shuch `.env` file is in the [correction-API repository](ht
 
 The main variables you can pass are:
 - `UPLOAD_DIRECTORY`: Directory where the uploaded files will be stored. The path is from the container's point of view. You will probably need to share this directory with the correctomatic's runner processes, using a bind mount or a volume.
+- `PORT`: Port where the API will listen. Defaults to 3000.
 - `REDIS_HOST`: Host of the redis server, from the container's point of view.
 - `REDIS_PORT`: Port of the redis server
 - `REDIS_PASSWORD`: Password for the redis server
-- `PORT`: Port where the API will listen
+- `DB_USER`, `DB_PASSWORD`: Database credentials
+- `DB_HOST`, `DB_PORT`: Database connection parameters. The host is from the container's point of view.
+- `DB_NAME`: Name of the database to use, defaults to `correctomatic`.
+- `JWT_SECRET_KEY`: Key for the JWT tokens.
 
 There are also variables for debugging:
 - `NODE_ENV`: Environment where the application is running. It can be `development`, `test` or `production`.
@@ -44,18 +48,23 @@ docker run --rm \
   -e UPLOAD_DIRECTORY=\tmp\exercises \
   -e REDIS_HOST=redis \
   -e REDIS_PORT=6379 \
-  -e REDIS_PASSWORD=value \
-  -e NODE_ENV=value \
+  -e REDIS_PASSWORD=<value> \
+  -e DB_USER=<value> \
+  -e DB_PASSWORD=<value> \
+  -e DB_HOST=postgres \
+  -e DB_PORT=5432 \
+  -e NODE_ENV=development \
   -e LOG_LEVEL=info \
   -e LOG_FILE=/var/log/correctomatic/correctomatic.log \
   -p 8080:8080 \
   correctomatic/api
 ```
-You will probably need to include the redis host and to mount the upload directory:
+You will probably need to include the redis and postgresql hosts and to mount the upload directory:
 ```bash
 docker run ...
   ...
   --add-host=redis:host-gateway \
+  --add-host=postgresql:host-gateway \
   --mount type=bind,source=/tmp/exercises,target=/tmp/exercises \
   correctomatic/api
 ```

@@ -7,8 +7,14 @@ ARG REPO_BRANCH=master
 ENV UPLOAD_DIRECTORY=/tmp/exercises
 ENV PORT=3000
 ENV NODE_ENV=production
+
+ENV DB_NAME=correctomatic
+ENV DB_HOST=postgresql
+ENV DB_PORT=5432
+
 ENV REDIS_HOST=redis
 ENV REDIS_PORT=6379
+
 ENV LOG_LEVEL=info
 ENV LOG_FILE=/var/log/correctomatic/correctomatic.log
 
