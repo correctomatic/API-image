@@ -16,7 +16,6 @@ ENV REDIS_HOST=redis
 ENV REDIS_PORT=6379
 
 ENV LOG_LEVEL=info
-ENV LOG_FILE=/var/log/correctomatic/correctomatic.log
 
 # Create log folder
 RUN mkdir -p /var/log/correctomatic && chown -R node:node /var/log/correctomatic
